@@ -7,3 +7,10 @@ RUN cd /nopcommerce && \
 RUN mkdir /nopcommerce/published/bin /nopcommerce/published/logs
 
 
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+# create user
+# add labels
+COPY --from=build /nopcommerce/published /nop
+WORKDIR /app
+EXPOSE 5000
+CMD ["dotnet", "Nop.Web.dll", "--urls", "http://0.0.0.0:5000"]
