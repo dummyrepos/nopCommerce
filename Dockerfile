@@ -11,6 +11,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 # create user
 # add labels
 COPY --from=build /nopcommerce/published /nop
-WORKDIR /app
+WORKDIR /nop
 EXPOSE 5000
 CMD ["dotnet", "Nop.Web.dll", "--urls", "http://0.0.0.0:5000"]
